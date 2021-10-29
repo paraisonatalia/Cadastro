@@ -1,0 +1,59 @@
+package cadastro.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import cadastro.model.Cadastro;
+import cadastro.model.ConnectionFactory;
+
+public class CadastroDAO {
+
+public void save(Cadastro cadastro) {
+
+String sql = "INSERT INTO CONTATOS('nome', 'email', 'senha','id_telefone') group VALUES ('?' , '?' , '?' ,'?')";
+
+Connection conn = null;
+PreparedStatement pstm = null;
+
+try {
+conn = ConnectionFactory.createConnectionToMySQL();
+pstm = (PreparedStatement) conn.prepareStatement(sql);
+pstm.setString(1, cadastro.getNome());
+//pstm.setString(1, cadastro.getEmail());
+//pstm.setString(1, cadastro.getSenha());
+//pstm.setInt(1, cadastro.getId_Telefone());
+
+//pstm.execute(sql);
+System.out.println(pstm);
+} catch (Exception e) {
+e.printStackTrace();
+} finally {
+
+	
+	
+try {
+if (pstm != null) {
+pstm.close();
+}
+
+if (conn != null) {
+conn.close();
+}
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+}
+
+}
+public CadastroDAO() {
+	// TODO Auto-generated constructor stub
+}
+
+
+}
+
+
+
+	

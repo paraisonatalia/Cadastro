@@ -1,0 +1,19 @@
+package cadastro.aplicacao;
+
+import cadastro.dao.CadastroDAO;
+import cadastro.model.Cadastro;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		CadastroDAO cadastroDao = new CadastroDAO();
+		Cadastro cadastro = new Cadastro();
+		cadastro.setNome("Natália Paraíso Vilela");
+		cadastro.setEmail("paraisonatalia@gmail.com");
+		cadastro.setId_Telefone(1);
+		cadastro.setSenha("1234");
+		cadastroDao.save(cadastro);
+		}
+
+		}
